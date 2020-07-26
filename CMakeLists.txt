@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.17)
+set(PROJECT_NAME stack_alloc_test)
+
+project(${PROJECT_NAME})
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS "-g -O0")
+set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+add_executable(${PROJECT_NAME}_O0 ${SRC_DIR}/main.cpp)
+add_executable(${PROJECT_NAME}_O1 ${SRC_DIR}/main.cpp)
+add_executable(${PROJECT_NAME}_O2 ${SRC_DIR}/main.cpp)
+add_executable(${PROJECT_NAME}_O3 ${SRC_DIR}/main.cpp)
+target_compile_options(${PROJECT_NAME}_O0 PRIVATE "-g;-O0")
+target_compile_options(${PROJECT_NAME}_O1 PRIVATE "-g;-O1")
+target_compile_options(${PROJECT_NAME}_O2 PRIVATE "-g;-O2")
+target_compile_options(${PROJECT_NAME}_O3 PRIVATE "-g;-O3")
+
+include_directories(stack_alloc_test PRIVATE ${INCLUDE_DIR})
